@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import InputBox from "../InputBox/InputBox";
 import { Url } from "../Constants/Constants";
-import Dropdown from "../Dropdown/Dropdown";
+import Dropdown from "../DashBoard/Dropdown";
 import GradientButton from "../Button/MainButton";
 import CancelButton from "../Button/CancelButton";
 

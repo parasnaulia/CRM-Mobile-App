@@ -15,9 +15,11 @@ import { Url } from "../Constants/Constants";
 import ChangePassword from "./ChangePassword";
 import NewPassword from "./NewPassword";
 import Loader from "../Loader/Loader";
+import { useNavigation } from "@react-navigation/native";
 
 const Login = () => {
   const [email, setEmail] = useState("");
+  const navigation = useNavigation();
 
   const [loading, setLoading] = useState(false);
   const [password, setPassword] = useState("");
@@ -46,10 +48,11 @@ const Login = () => {
         // Alert.alert("Success", "Login successful!");
         // setNewPassword(true);
         setForgotPassword(false);
-        Alert.alert("Login Sucess", resdata.message);
+        // Alert.alert("Login Sucess", resdata.message);
         setEmail("");
         setPassword("");
         setLoading(false);
+        navigation.replace("Main");
       } else if (resdata?.isExpired) {
         Alert.alert("Session Expired", resdata.message);
       } else {

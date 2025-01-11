@@ -13,7 +13,7 @@ import LeadsForms from "../../Components/Leads/LeadsForms";
 import InnerButton from "../../Components/Button/InnerButton";
 import { options, Url } from "../../Components/Constants/Constants";
 import Ionicons from "react-native-vector-icons/Ionicons";
-import Dropdown from "../../Components/Dropdown/Dropdown";
+import Dropdown from "../../Components/DashBoard/Dropdown";
 import EmailCheck from "../../Components/Leads/EmailCheck";
 import AdditionalDetails from "../../Components/Leads/AdditionalDetails";
 
