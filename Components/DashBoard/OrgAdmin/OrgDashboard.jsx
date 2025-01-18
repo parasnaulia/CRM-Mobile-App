@@ -6,6 +6,9 @@ import { Url } from "../../Constants/Constants";
 
 import { View } from "react-native";
 import LeadsByStageCharts from "./Charts/LeadsByStageCharts";
+import LeadConversionForOrg from "./Charts/LeadConversionForOrg";
+
+// import ConversionRateChart from "./Charts/ConversionRate";
 
 const OrganizationDashBoard = () => {
   const MainName = 87;
@@ -84,53 +87,68 @@ const OrganizationDashBoard = () => {
 
   return (
     <ScrollView>
-      <View>
+      <View style={styles.container}>
         <View>
-          {" "}
           <StatCard
             iconName="analytics-outline"
-            iconColor="#ffeb3b"
+            iconColor="#4CAF50" // Modern green for analytics
             heading="Total Sale"
             description={totalSale}
-            backgroundColor="#673AB7"
-            borderColor="#512DA8"
+            backgroundColor="#1E293B" // Dark slate background for elegance
+            borderColor="#4CAF50" // Matching green for border
           />
         </View>
         <View>
-          {" "}
           <StatCard
             iconName="code-slash-outline"
-            iconColor="#ffeb3b"
+            iconColor="#FF9800" // Warm amber for projects
             heading="Projects"
             description={project?.length}
-            backgroundColor="#2196F3"
-            borderColor="#1976D2"
+            backgroundColor="#1E293B" // Consistent dark slate background
+            borderColor="#FF9800" // Amber for the border
           />
         </View>
         <View>
           <StatCard
             iconName="trending-up-outline"
-            iconColor="#E91E63"
+            iconColor="#03A9F4" // Cool blue for revenue
             heading="Total Revenue"
             description={`₹ ${Number(totalRevenue)?.toLocaleString("en-IN")}`}
-            backgroundColor="#FFC107"
-            borderColor="#FFA000"
+            backgroundColor="#1E293B" // Consistent dark slate background
+            borderColor="#03A9F4" // Matching blue for border
           />
         </View>
-      </View>
-      <View>
-        <LeadsByStageCharts />
-      </View>
 
-      {/* <View>
-        <LeadsByStageCharts />
-      </View> */}
+        <View>
+          <LeadsByStageCharts />
+        </View>
+        {/* <View style={styles.conversion}>
+          <LeadsByStageCharts />
+        </View> */}
+
+        <View
+          style={{
+            marginTop: 10,
+            justifyContent: "center",
+            alignItems: "center",
+            flex: 1,
+          }}
+        >
+          <LeadConversionForOrg />
+        </View>
+      </View>
     </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
+    marginTop: 10,
+  },
+  inner1: {
+    marginTop: 10,
+  },
+  conversion: {
     marginTop: 10,
   },
 });

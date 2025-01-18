@@ -11,6 +11,7 @@ import Index from "./Screens/Leads/Index"; // Leads Screen
 import Customer from "./Screens/Customer/Customer"; // Customer Screen
 import DashBoard from "./Components/DashBoard/DashBoard"; // Dashboard Screen
 import { Ionicons } from "@expo/vector-icons";
+import Project from "./Screens/Projects/Project";
 
 // Create Stack Navigator for login flow
 const Stack = createNativeStackNavigator();
@@ -50,6 +51,15 @@ function TabNavigator() {
         options={{
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="person-outline" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Project"
+        component={Project}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="code-slash-outline" color={color} size={size} />
           ),
         }}
       />

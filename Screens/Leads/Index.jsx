@@ -16,6 +16,7 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import Dropdown from "../../Components/DashBoard/Dropdown";
 import EmailCheck from "../../Components/Leads/EmailCheck";
 import AdditionalDetails from "../../Components/Leads/AdditionalDetails";
+import LeadsShimmer from "../../Components/Leads/LeadsShimmer.jsx/LeadsShimmer";
 
 const Index = () => {
   const [openForm, setOpenForm] = useState(false);
@@ -33,6 +34,8 @@ const Index = () => {
 
   const [leadsData1, setLeadsData1] = useState(null);
 
+  const [loading, setLoading] = useState(false);
+
   const leadssubmitHandler = () => {
     setOpenForm(true);
   };
@@ -42,9 +45,11 @@ const Index = () => {
   useEffect(() => {
     const leadsFetcher = async () => {
       try {
+        setLoading(true);
         const data = await fetch(`${Url}leadRoutes/leadsData/${MainOrgName}`);
         const resData = await data.json();
         setLeadsData(resData.data);
+        setLoading(false);
       } catch (e) {
         console.error("Error fetching leads:", e);
       }
@@ -56,6 +61,7 @@ const Index = () => {
   }, [MainOrgName, toggle]);
   const handleDelete = async (leadId) => {
     try {
+      setLoading(true);
       // Send a DELETE request to the backend API using fetch
       const response = await fetch(
         `${Url}leadRoutes/deleteLeadData/${leadId}`,
@@ -76,6 +82,7 @@ const Index = () => {
         // Refresh the list of leads (ensure renderList is properly defined)
         // renderList();
         setToggle(!toggle);
+        setLoading(false);
         Alert.alert("Leads Deleted Sucessfully", "Good");
       } else {
         // Display error toast notification for failure response
@@ -166,6 +173,10 @@ const Index = () => {
   const handleEmail = () => {
     console.log("nice");
   };
+
+  if (loading) {
+    return <LeadsShimmer />;
+  }
 
   const renderCard = ({ item }) => (
     // const data=10;

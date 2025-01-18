@@ -220,6 +220,9 @@ const LeadsForms = ({ isOpen, onClose, renderList, data1, isEdit }) => {
           const customProject = jsonData?.data?.map((item, index) => {
             return { label: item?.Name, value: item?.Project_Code };
           });
+
+          // console.log(customProject);
+          // console.log("niceeeeeeeeeee");
           setProjects(customProject);
         }
       } catch (e) {
@@ -370,7 +373,7 @@ const LeadsForms = ({ isOpen, onClose, renderList, data1, isEdit }) => {
     <Modal
       transparent={true}
       visible={isOpen}
-      animationType="fade"
+      animationType="slide"
       onRequestClose={onClose}
     >
       <View style={styles.overlay}>
@@ -577,15 +580,17 @@ const LeadsForms = ({ isOpen, onClose, renderList, data1, isEdit }) => {
 const styles = StyleSheet.create({
   overlay: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    // justifyContent: "center",
+    // alignItems: "center",
     backgroundColor: "rgba(0, 0, 0, 0.5)",
+    width: "100%",
   },
   scrollContent: {
     flexGrow: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    // justifyContent: "center",
+    // alignItems: "center",
     paddingHorizontal: 20,
+    // width: "100%",
   },
   formContainer: {
     width: "100%",
